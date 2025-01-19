@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form{
+        background: linear-gradient(black,rgb(4, 4, 81));
+        color: white;
+        border: 1px solid blue;
+        border-radius: 10px;
+        margin: 15px 400px;
+        padding: 25px;
+        font-size: 22px;
+        }
+        .form input, .form select{
+            margin: 15px;
+        border: 2px solid blue;
+        background: linear-gradient(white,lightblue);
+        font-size: 20px;
+        padding: 8px;
+        }
+        .form button{
+            background: aliceblue;
+        }
+        .form button:hover{
+            margin-bottom: -2px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    {%extends 'main.html'%}
+    {%block content%}
+    <div class="form">
+        <form method="post" action="">
+            {% csrf_token %}
+                {{form.as_p}}
+            <button type="submit">Submit</button>
+            </form>
+    </div>
+    {%endblock content%}
+    
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            background: #000;
+        }
+        .reg, .form{
+            background: linear-gradient(black,rgb(4, 4, 81));
+        color: white;
+        border: 1px solid blue;
+        border-radius: 10px;
+        margin: 15px 400px;
+        padding: 5px;
+        font-size: 22px;
+        }
+        .form input{
+            margin: 15px;
+        border: 2px solid blue;
+        background: linear-gradient(white,lightblue);
+        font-size: 20px;
+        padding: 8px;
+        }
+        .reg button, .form button{
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+    {%extends 'main.html'%}
+    {%block content%}
+    <div>
+        <div class="form">
+            <center>
+                <form action="" method="post">
+                    {%csrf_token%}
+                    <label for="username">Username: </label> 
+                    <input type="text" placeholder="Enter Username" name="username"/> <br>
+                    <label for="password">Password: </label>
+                    <input type="password" placeholder="Enter Password" name="password"/> <br>
+                    <button type="submit">Log in</button>
+                </form>
+            </center>
+        </div>
+        <div class="reg">
+            <center>
+                Haven't register yet!!! &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'register' %}">
+                <button type="submit">Register</button>
+                </a></center>
+        </div>
+    </div>
+    
+   
+    {%endblock content%}
+</body>
+</html>

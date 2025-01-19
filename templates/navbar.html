@@ -1,0 +1,89 @@
+<style>
+    input{
+        border-radius: 10px;
+        width: 400px;
+        font-size: 20px;
+        padding: 10px 15px;
+        margin-left: 300px;
+        margin-top: 15px;
+    }
+    .nav{
+        display: grid;
+        grid-template-columns: 1fr 5fr 1fr;
+        background: #000;
+    }
+   
+    button{
+       
+        background: white;
+        color: black;
+        border: 2px solid gray;
+        padding: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    button:hover{
+        padding: 12px;
+        background: whitesmoke;
+        
+    }
+
+    .hey{
+        text-align: center;
+        justify-content: center;
+        margin-top: 10px;
+        font-size: 25px;
+    }
+    .log{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .in{
+        margin-top: 10px;
+    }
+</style>
+
+{% load static %}
+
+<div class="nav">
+    <div class="pic">
+        <img src="{%static "images/logo.jpg" %}" height="120px" width="170px"><br>
+        
+    </div>
+    
+    
+    <div class="search">
+        <div class="hey">
+        {%if request.user.is_authenticated%}
+            Hello {{request.user}} !!!
+        {% endif %}
+        </div>
+        <br>
+        
+        <form action="{%url 'home'%}" method="get">
+            <input type="text" name="q" placeholder="Search rooms..."/>
+            </form>
+            
+    </div>
+    <div class="log">
+        <div class="in">
+            {%if request.user.is_authenticated%}
+            <a href="{%url 'logout'%}">
+            <button type="submit">Log out</button>
+            </a>
+            {%else%}
+            <a href="{%url 'login'%}">
+            <button type="submit">Log in</button>
+            </a>
+            {% endif %}
+        </div>
+        <div>
+            <a href="{% url 'register' %}">
+                <button type="submit">Register</button>
+                </a>
+        </div>
+    </div>
+</div>
+<hr>

@@ -1,0 +1,61 @@
+<style>
+    .feed{
+        background: linear-gradient(black,rgb(4, 4, 81));
+        color: rgb(102, 78, 183);
+        border: 1px solid blue;
+        border-radius: 10px;
+        margin: 5px;
+        padding: 5px;
+    }
+    
+    .feedmsg{
+        background: linear-gradient(black,rgb(4, 4, 81));
+        color: white;
+        border: 1px solid blue;
+        border-radius: 10px;
+        margin: 5px;
+        padding: 5px;
+        font-size: 25px;
+    }
+    .feedmsg button{
+        background: darkblue;
+        color: aliceblue;
+        margin: 5px;
+        padding: 5px;
+        font-size: 12px;
+    }
+    .feedmsg button:hover{
+        padding: 6px;
+        margin: 4px;
+        background: darkblue;
+        color: aliceblue;
+    }
+</style>
+<div class="feed">
+    {% for room in rooms %}
+                    <div class="feedmsg">
+                        {{room.name}}<a href="{%url 'room' room.id%}">&nbsp;&nbsp;<button>Go to room</button></a><br>
+                        <small>Topic: {{room.topic.name}}</small><br>
+                        {% if request.user == room.host %}
+                        
+                            <span>Created by: You</span>
+                        <br>
+                        {%else%}
+                        <span>Created by:
+                        <a href="{%url 'profile' room.host.id%}" style="color: rgb(155, 63, 213)">
+                             @{{room.host.username}}</span>
+                        </a> <br>
+                        {%endif%}
+                        {% if request.user == room.host %}
+                        <a href="{%url 'update-room' room.id %}">
+                            <button>Edit</button>
+                        </a>
+                        <a href="{%url 'delete-room' room.id %}">
+                            <button>
+                                Delete
+                            </button>
+                        </a>
+                        {% endif %}
+                    </div>
+                    {%endfor%}
+</div>

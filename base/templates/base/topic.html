@@ -1,0 +1,24 @@
+<style>
+    .topic{
+        background: linear-gradient(black,rgb(4, 4, 81));
+        color: rgb(102, 78, 183);
+        border: 1px solid blue;
+        border-radius: 10px;
+        margin: 5px;
+        padding: 5px;
+    }
+</style>
+<div class="topic">
+    <h2>
+        Browse Topics
+        <br><hr>
+        <div>
+            <a href="{%url 'home' %}">All</a>
+        </div>
+        {%for topic in topics%}
+        <div>
+            <a href="{%url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
+        </div>
+        {%endfor%}
+    </h2>
+</div>

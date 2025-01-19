@@ -1,0 +1,25 @@
+{%include 'main.html'%}
+{%block content%}
+<style>
+    .profile{
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+</style>
+<center>
+    <h2>
+        User: {{user.username}}
+    </h2>
+</center>
+<div class="profile">
+    <div>
+        {%include 'base/topic.html'%}
+    </div>
+    <div>
+        {%include 'base/feed.html'%}
+    </div>
+    <div>
+        {%include 'base/activity.html'%}
+    </div>
+</div>
+{%endblock%}

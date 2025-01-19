@@ -1,0 +1,71 @@
+<style>
+    .act button{
+        background: red;
+        margin: 0px;
+    }
+    .act{
+        background: linear-gradient(black,rgb(4, 4, 81));
+        color: white(102, 78, 183);
+        border: 1px solid blue;
+        border-radius: 10px;
+        margin: 5px;
+        padding: 5px;
+        font-size: 18px;
+    }
+    .top{
+        color: rgb(102, 78, 183);;
+    }
+    .actmsg{
+        background: linear-gradient(black,rgb(4, 4, 81));
+        color: white(102, 78, 183);
+        border: 1px solid blue;
+        border-radius: 10px;
+        margin: 5px;
+        padding: 5px;
+    }
+    .act button{
+        background: darkblue;
+        color: aliceblue;
+        margin: 5px;
+        margin-top: -5px;
+        padding: 5px;
+        font-size: 12px;
+    }
+    .act button:hover{
+        padding: 6px;
+        margin: 4px;
+        background: darkblue;
+        color: aliceblue;
+    }
+    small{
+        font-size: 18px;
+    }
+    p{
+        font-size: 20px;
+    }
+    .actmsg a
+    {
+        font-size: 25px;
+    }
+</style>
+<div class="act">
+    <div class="top">
+        <h2>Recent Activities</h2>
+    </div>
+                <hr>
+                    {%for message in room_messages%}
+                     
+                <div class="actmsg">
+                <small>
+                    <a href="{%url 'profile' message.user.id%}" style="color: lightblue;">@{{message.user}}</a>&nbsp;&nbsp;&nbsp;{{message.created|timesince}} ago 
+                </small><br>
+                <small>Replied to: {{message.room}}</small><br>
+                <p>{{message}}</p>
+                {% if request.user == message.user %}
+                    <a href="{%url 'delete-msg' message.id%}">
+                    <button type="submit">Delete</button>
+                    </a>
+                {%endif%} <br>
+            </div>
+                {%endfor%}
+</div>
